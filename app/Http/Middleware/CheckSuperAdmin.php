@@ -14,8 +14,6 @@ class CheckSuperAdmin
         if(auth()->check() && auth()->user()->role === 'superadmin'){
             return $next($request);
         }
-        return response()->json([
-            'message' => 'Access Denied! Only SuperAdmin can access this panel.'
-        ], 403);
+        return redirect()->route('auth.login')->with('error', 'Access Denied! Only SuperAdmin can access this panel.');
     }
 }
