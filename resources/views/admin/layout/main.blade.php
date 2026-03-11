@@ -20,7 +20,6 @@
                     <img src="https://ui-avatars.com/api/?name={{ auth()->user()->name }}" class="w-10 h-10 rounded-full border">
                 </div>
             </header>
-
             <main class="p-6 overflow-y-auto">
                 @yield('content')
             </main>

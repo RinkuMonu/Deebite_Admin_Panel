@@ -5,20 +5,19 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
-{  
+{    
     public function up(): void
     {
-        Schema::create('media_gallery', function (Blueprint $table) {
+        Schema::create('feedback', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('image_path');
-            $table->enum('type', ['cart', 'food', 'menu', 'other'])->default('other');
+            $table->string('name');
+            $table->string('number');
+            $table->text('feedback');
             $table->timestamps();
         });
     }
-
     public function down(): void
     {
-        Schema::dropIfExists('media_gallery');
+        Schema::dropIfExists('feedback');
     }
 };
