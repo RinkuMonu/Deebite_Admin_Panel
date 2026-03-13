@@ -23,6 +23,7 @@ Route::middleware(['isSuperAdmin'])->prefix('admin')->group(function (){
     Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
     Route::get('/users',[UserController::class,'index'])->name('admin.users');
     Route::get('/vendors',[VendorController::class,'index'])->name('admin.vendors');
+    Route::post('/vendors/store', [VendorController::class, 'storeVendor'])->name('admin.vendors.store');
     Route::get('/delivery-partners',[DeliveryPartnerController::class,'index'])->name('admin.delivery-partners');
     Route::get('/vendor/{id}/show', [FoodController::class, 'show'])->name('admin.vendors.show');
     Route::post('/food/store', [FoodController::class, 'store'])->name('admin.food.store');
