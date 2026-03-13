@@ -10,12 +10,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('number')->nullable();
             $table->string('otp', 6)->nullable();
-            $table->string('email')->unique();
+            $table->timestamp('otp_expires_at')->nullable();
+            $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->enum('role', ['superadmin', 'user', 'vendor', 'delivery'])->default('user');
             $table->text('address')->nullable();
             $table->decimal('latitude', 10, 8)->nullable();
