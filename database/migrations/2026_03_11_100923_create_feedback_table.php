@@ -11,8 +11,9 @@ return new class extends Migration
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('number');
-            $table->text('feedback');
+            $table->string('number', 15); // Length limit de di
+            $table->text('feedback')->nullable(); // Default '' se achha nullable hai
+            $table->decimal('rating', 3, 1)->default(0.0); // E.g. 4.5, 5.0
             $table->timestamps();
         });
     }
