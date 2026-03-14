@@ -11,6 +11,7 @@ class FoodItem extends Model
     public function vendor() {
         return $this->belongsTo(User::class, 'vendor_id');
     }
+    
 
     // Relationship: Category se
     public function category() {

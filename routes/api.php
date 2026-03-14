@@ -22,7 +22,14 @@ Route::prefix('auth')->group(function () {
 Route::prefix('user')->middleware(['auth:sanctum', 'user'])->group(function () {
     Route::get('/profile', [UserDashBoardController::class, 'profile']);
     Route::post('/update-profile', [UserDashBoardController::class, 'updateProfile']);
+    Route::get('/get/all-address', [UserDashBoardController::class, 'getAddress']);
     Route::post('/add-address', [UserDashBoardController::class, 'addAddress']);
+
+    // User Routes for Vnedor listing and food item listing --
+    Route::get('/food-category', [UserDashBoardController::class, 'getFoodCategories']);
+    Route::get('/food-items/{category_id}', [UserDashBoardController::class, 'getFoodItemsByCategory']);
+    Route::post('/get/vendors-list', [UserDashBoardController::class, 'getNearbyVendors']);
+    Route::get('/vendor/{id}/food-items', [UserDashBoardController::class, 'getVendorFoodItems']);
 
 });
 
