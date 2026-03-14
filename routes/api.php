@@ -18,19 +18,21 @@ Route::prefix('auth')->group(function () {
 
 //Protected Customer routes----------------------------------------
 Route::prefix('user')->middleware(['auth:sanctum', 'user'])->group(function () {
-
     Route::get('/profile', [UserDashBoardController::class, 'profile']);
+    Route::post('/update-profile', [UserDashBoardController::class, 'updateProfile']);
+    Route::post('/add-address', [UserDashBoardController::class, 'addAddress']);
 
 });
+
 
 //Protected   Vendor routes----------------------------------------
 Route::prefix('vendor')->middleware(['auth:sanctum', 'vendor'])->group(function () {
-   
     Route::get('/profile', [VendorDashBoardController::class, 'profile']);
+
 });
 
+
 //Protected Delivery Partner routes-----------------------------------------
-Route::prefix('delivery')->middleware(['auth:sanctum', 'delivery'])->group(function () {
-    
+Route::prefix('delivery')->middleware(['auth:sanctum', 'delivery'])->group(function () {  
     Route::get('/profile', [DeliveryDashBoardController::class, 'profile']);
 });
