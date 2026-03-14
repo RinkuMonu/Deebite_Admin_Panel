@@ -4,12 +4,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\User\DashBoardController as UserDashBoardController;
+use App\Http\Controllers\Api\FeedbackController;
 
 Route::get('/test', function () {
     return response()->json([
         'message' => 'API working successfully'
     ]);
 });
+Route::post('/feedback/submit', [FeedbackController::class, 'store']);
 // Auth routes for all users (Vendor, Delivery Partner, Customer)-------------------------------------
 Route::prefix('auth')->group(function () {
     Route::post('/send-otp', [AuthController::class, 'sendOtp']);
