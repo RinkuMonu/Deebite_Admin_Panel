@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\User\DashBoardController as UserDashBoardController;
+use App\Http\Controllers\Api\Vendor\DashBoardController as VendorDashBoardController;
 use App\Http\Controllers\Api\FeedbackController;
 
 Route::get('/test', function () {
@@ -22,7 +23,14 @@ Route::prefix('auth')->group(function () {
 Route::prefix('user')->middleware(['auth:sanctum', 'user'])->group(function () {
     Route::get('/profile', [UserDashBoardController::class, 'profile']);
     Route::post('/update-profile', [UserDashBoardController::class, 'updateProfile']);
+    Route::get('/get/all-address', [UserDashBoardController::class, 'getAddress']);
     Route::post('/add-address', [UserDashBoardController::class, 'addAddress']);
+
+    // User Routes for Vnedor listing and food item listing --
+    Route::get('/food-category', [UserDashBoardController::class, 'getFoodCategories']);
+    Route::get('/food-items/{category_id}', [UserDashBoardController::class, 'getFoodItemsByCategory']);
+    Route::post('/get/vendors-list', [UserDashBoardController::class, 'getNearbyVendors']);
+    Route::get('/vendor/{id}/food-items', [UserDashBoardController::class, 'getVendorFoodItems']);
 
 });
 
@@ -30,6 +38,8 @@ Route::prefix('user')->middleware(['auth:sanctum', 'user'])->group(function () {
 //Protected   Vendor routes----------------------------------------
 Route::prefix('vendor')->middleware(['auth:sanctum', 'vendor'])->group(function () {
     Route::get('/profile', [VendorDashBoardController::class, 'profile']);
+    Route::post('/update-profile', [VendorDashBoardController::class, 'updateProfile']);
+    Route::post("/activate-deactivate" , [VendorDashBoardController::class, 'activateDeactivate']);
 
 });
 
