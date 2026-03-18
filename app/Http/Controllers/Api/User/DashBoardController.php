@@ -187,7 +187,7 @@ class DashBoardController extends Controller
         }    
     }
 
-    public function getFoodItemsByCategory($category_id) {}
+    public function getFoodItemsByCategory($category_id) {}  
 
     public function getNearbyVendors(Request $request)
     {

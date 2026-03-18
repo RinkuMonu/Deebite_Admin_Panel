@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\User\DashBoardController as UserDashBoardController;
+use App\Http\Controllers\Api\Vendor\DashBoardController as VendorDashBoardController;
 use App\Http\Controllers\Api\FeedbackController;
 
 Route::get('/test', function () {
@@ -37,6 +38,8 @@ Route::prefix('user')->middleware(['auth:sanctum', 'user'])->group(function () {
 //Protected   Vendor routes----------------------------------------
 Route::prefix('vendor')->middleware(['auth:sanctum', 'vendor'])->group(function () {
     Route::get('/profile', [VendorDashBoardController::class, 'profile']);
+    Route::post('/update-profile', [VendorDashBoardController::class, 'updateProfile']);
+    Route::post("/activate-deactivate" , [VendorDashBoardController::class, 'activateDeactivate']);
 
 });
 
