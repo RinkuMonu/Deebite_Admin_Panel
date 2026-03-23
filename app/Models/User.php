@@ -56,6 +56,10 @@ class User extends Authenticatable
         return $this->hasOne(VendorSponsorship::class, 'vendor_id');
     }
 
+    public function deviceToken()
+    {
+        return $this->hasOne(DeviceToken::class);
+    }
 
     
 }
