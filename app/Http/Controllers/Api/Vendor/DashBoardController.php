@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;   // For authentication
 use Illuminate\Support\Facades\Log;    // For logging
 use App\Http\Resources\UserResource;
-use App\Models\User;
+use App\Models\{User , Category as FoodCategory};
+use Debugbar;
+
 
 class DashBoardController extends Controller
 {
@@ -135,6 +137,47 @@ class DashBoardController extends Controller
         } catch (\Exception $e) {
             Log::error('Activate/Deactivate Error: ' . $e->getMessage());
 
+            return response()->json([
+                'status' => false,
+                'message' => 'Something went wrong',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function getFoodCategories() {
+        try {
+            $categories = FoodCategory::select('id', 'name')->get();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Food categories fetched successfully',
+                'categories' => $categories,
+            
+            ], 200);
+
+        } catch (\Exception $e) {
+            Log::error('Get Food Categories Error: ' . $e->getMessage());
+            return response()->json([
+                'status' => false,
+                'message' => 'Something went wrong',
+                'error' => $e->getMessage()
+            ], 500);
+        }    
+    }
+
+    public function addFoodItem(Request $request) {
+        try {
+            // Validation logic here
+            // FoodItem::create([...]);
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Food item added successfully',
+            ], 201);
+
+        } catch (\Exception $e) {
+            Log::error('Add Food Item Error: ' . $e->getMessage());
             return response()->json([
                 'status' => false,
                 'message' => 'Something went wrong',
