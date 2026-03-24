@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use Illuminate\Database\Eloquent\Builder;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -48,6 +50,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(FoodItem::class, 'vendor_id');
     }
+<<<<<<< HEAD
     // User.php Model mein add karein
     // public function activeOrders() {
     //     // Maan lete hain aapke paas Order model hai
@@ -66,4 +69,18 @@ class User extends Authenticatable
         $c = 2 * atan2(sqrt($a), sqrt(1-$a));
         return round($earthRadius * $c, 2) . " km";
     }
+=======
+
+    public function sponseredVendors()
+    {
+        return $this->hasOne(VendorSponsorship::class, 'vendor_id');
+    }
+
+    public function deviceToken()
+    {
+        return $this->hasOne(DeviceToken::class);
+    }
+
+    
+>>>>>>> 9d962c49d68fb982d63f616795a777dcad02c864
 }

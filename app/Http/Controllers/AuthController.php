@@ -34,4 +34,5 @@ class AuthController extends Controller
         // 5. Credentials galat
         return back()->withErrors(['email' => 'Invalid Credentials!']);
     }
+
 }
