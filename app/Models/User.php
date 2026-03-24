@@ -50,6 +50,26 @@ class User extends Authenticatable
     {
         return $this->hasMany(FoodItem::class, 'vendor_id');
     }
+<<<<<<< HEAD
+    // User.php Model mein add karein
+    // public function activeOrders() {
+    //     // Maan lete hain aapke paas Order model hai
+    //     return $this->hasMany(Order::class, 'delivery_id')->whereIn('status', ['pending', 'picked_up']);
+    // }
+
+    // Distance calculate karne ka helper (Haversine formula)
+    public function getDistanceFrom($storeLat, $storeLong) {
+        if (!$this->latitude || !$this->longitude) return "N/A";
+        
+        $earthRadius = 6371; // km
+        $dLat = deg2rad($this->latitude - $storeLat);
+        $dLon = deg2rad($this->longitude - $storeLong);
+        
+        $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($storeLat)) * cos(deg2rad($this->latitude)) * sin($dLon/2) * sin($dLon/2);
+        $c = 2 * atan2(sqrt($a), sqrt(1-$a));
+        return round($earthRadius * $c, 2) . " km";
+    }
+=======
 
     public function sponseredVendors()
     {
@@ -62,4 +82,5 @@ class User extends Authenticatable
     }
 
     
+>>>>>>> 9d962c49d68fb982d63f616795a777dcad02c864
 }
