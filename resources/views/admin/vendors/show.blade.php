@@ -11,6 +11,7 @@
                 <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded">Vendor ID: #{{ $vendor->id }}</span>
             </div>
             <hr class="my-4">
+            
             <div class="space-y-2 text-sm">
                 <p><strong>Owner:</strong> {{ $vendor->name }}</p>
                 <p><strong>Contact:</strong> {{ $vendor->number }}</p>
