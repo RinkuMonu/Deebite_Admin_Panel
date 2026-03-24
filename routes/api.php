@@ -16,9 +16,17 @@ Route::middleware('throttle:rateLimiter')->group(function () {
     // Auth routes for all users (Vendor, Delivery Partner, Customer)-------------------------------------
     Route::prefix('auth')->group(function () {
         Route::post('/send-otp', [AuthController::class, 'sendOtp']);
-        Route::post('/verify-otp', [AuthController::class,'verifyOtp']);
+        Route::post('/verify-otp', [AuthController::class,'verifyOtp']);   
     });
 
+    //Route with multiAuth middleware to store device token for all authenticated users-------------------------------
+    Route::prefix('multiAuth')->middleware(['auth:sanctum', 'multiAuth'])->group(function () {
+        Route::post('/register-token', [AuthController::class, 'storeDeviceToken']);
+        // testing -> FCM -> event -> Listener -> Job -> FirebaseService 
+        Route::get('/test-notification', [AuthController::class, 'sendNotification']);
+    });
+
+ 
     //Protected Customer routes----------------------------------------
     Route::prefix('user')->middleware(['auth:sanctum', 'user'])->group(function () {
         Route::get('/profile', [UserDashBoardController::class, 'profile']);
@@ -31,7 +39,6 @@ Route::middleware('throttle:rateLimiter')->group(function () {
         Route::get('/food-items/{category_id}', [UserDashBoardController::class, 'getFoodItemsByCategory']);
         Route::post('/get/vendors-list', [UserDashBoardController::class, 'getNearbyVendors']);
         Route::get('/vendor/{id}/food-items', [UserDashBoardController::class, 'getVendorFoodItems']);
-
     });
 
 
@@ -44,7 +51,6 @@ Route::middleware('throttle:rateLimiter')->group(function () {
         // Add food items as per category
         Route::get('/food-category', [VendorDashBoardController::class, 'getFoodCategories']);
         Route::post('/add/food-items', [VendorDashBoardController::class, 'addFoodItem']);
-
     });
 
 

@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'user' => App\Http\Middleware\UserMiddleware::class,
             'vendor' => App\Http\Middleware\VendorMiddleware::class,
             'delivery' => App\Http\Middleware\DeliveryMiddleware::class,
+            'multiAuth' => \App\Http\Middleware\MultiAuth::class,
             'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         ]);
     })
