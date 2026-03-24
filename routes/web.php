@@ -8,7 +8,17 @@ use App\Http\Controllers\VendorController;
 use App\Http\Controllers\DeliveryPartnerController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\FoodController;
+<<<<<<< HEAD
 use App\Http\Controllers\CategoryController;
+=======
+use Kreait\Firebase\Factory;
+
+Route::get('/fcm-test', function () {
+    return view('welcome');
+});
+
+
+>>>>>>> 9d962c49d68fb982d63f616795a777dcad02c864
 Route::get('/', function () {
     return redirect()->route('auth.login');
 });
@@ -46,3 +56,5 @@ Route::middleware(['isSuperAdmin'])->prefix('admin')->group(function (){
         return redirect()->route('auth.login');
     })->name('admin.logout');
 });
+
+
