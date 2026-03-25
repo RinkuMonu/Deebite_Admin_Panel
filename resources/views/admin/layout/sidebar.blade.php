@@ -14,6 +14,9 @@
         <a href="{{route('admin.delivery-partners')}}" class="block py-2.5 px-4 rounded hover:bg-slate-700 transition">
             <i class="fa-solid fa-truck mr-2"></i> Delivery Partners
         </a>
+        <a href="{{route('admin.categories.index')}}" class="block py-2.5 px-4 rounded hover:bg-slate-700 transition">
+            <i class="fa-solid fa-truck mr-2"></i>Categories
+        </a>
         <a href="{{route('feedback.index')}}" class="block py-2.5 px-4 rounded hover:bg-slate-700 transition">
             <i class="fa-solid fa-comment mr-2"></i> Feedback
         </a>
