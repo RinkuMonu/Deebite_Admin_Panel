@@ -44,7 +44,6 @@ class SendPushNotificationJob implements ShouldQueue
     public function handle(): void
     {
         try {
-            
             $firebase = new FirebaseService();
             $sent = $firebase->send($this->token, $this->title, $this->body, $this->data);
 

@@ -9,11 +9,10 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Log;
 
 class TestEventNotification
 {
-    use InteractsWithSockets, SerializesModels , Dispatchable;
+    use InteractsWithSockets, SerializesModels;
 
     public string $token;
     public string $title;
