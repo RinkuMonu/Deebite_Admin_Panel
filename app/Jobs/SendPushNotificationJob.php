@@ -48,9 +48,9 @@ class SendPushNotificationJob implements ShouldQueue
             $sent = $firebase->send($this->token, $this->title, $this->body, $this->data);
 
             if ($sent) {
-                Log::info('FCM sent successfully', ['token' => $this->token]);
+                Log::info('FCM sent successfully in Job', ['token' => $this->token]);
             } else {
-                Log::warning('FCM failed', ['token' => $this->token]);
+                Log::warning('FCM failed in Job', ['token' => $this->token]);
             }
         } catch (\Exception $e) {
             Log::error('FCM Job Exception', ['error' => $e->getMessage()]);

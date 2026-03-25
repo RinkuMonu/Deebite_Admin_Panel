@@ -198,10 +198,11 @@ class AuthController extends Controller
             }
 
            
+
             event(new TestEventNotification(
                 $deviceToken->device_token,
-                'Test Notification',
-                'This is a test notification.',
+                'Test Notification - 1',
+                'This is a test notification - 2.',
                 [
                     "extraData" => "value",
                     "timestamp" => now()->toDateTimeString()
