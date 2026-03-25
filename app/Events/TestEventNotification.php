@@ -9,10 +9,11 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class TestEventNotification
 {
-    use InteractsWithSockets, SerializesModels;
+    use InteractsWithSockets, SerializesModels , Dispatchable;
 
     public string $token;
     public string $title;
@@ -23,10 +24,12 @@ class TestEventNotification
      */
     public function __construct(string $token, string $title, string $body, array $data = [])
     {
+        \Log::info('Creating TestEventNotification with token: ' . $token);
         $this->token = $token;
         $this->title = $title;
         $this->body = $body;
         $this->data = $data;
+
     }
 
     /**
