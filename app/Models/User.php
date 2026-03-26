@@ -50,7 +50,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(FoodItem::class, 'vendor_id');
     }
-<<<<<<< HEAD
     // User.php Model mein add karein
     // public function activeOrders() {
     //     // Maan lete hain aapke paas Order model hai
@@ -69,7 +68,6 @@ class User extends Authenticatable
         $c = 2 * atan2(sqrt($a), sqrt(1-$a));
         return round($earthRadius * $c, 2) . " km";
     }
-=======
 
     public function sponseredVendors()
     {
@@ -82,5 +80,4 @@ class User extends Authenticatable
     }
 
     
->>>>>>> 9d962c49d68fb982d63f616795a777dcad02c864
 }
