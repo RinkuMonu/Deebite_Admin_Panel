@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="overflow-x-auto border border-rose-200 bg-rose-200 shadow-lg shadow-rose-100/30">
+    <div class="rounded-xl overflow-x-auto border border-rose-200 bg-rose-200 shadow-lg shadow-rose-100/30">
         <table class="w-full text-sm text-left">
             <thead class="bg-rose-200 text-slate-900 uppercase text-xs tracking-wider">
                 <tr>
