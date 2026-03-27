@@ -1,5 +1,5 @@
 <aside class="w-64 bg-slate-800 text-white min-h-screen p-4">
-    <h2 class="text-xl font-bold mb-6 text-center text-indigo-400">Admin Panel</h2>
+    <h2 class="text-xl font-bold mb-6 text-center text-rose-500">Admin Panel</h2>
     
     <nav class="space-y-2">
         <a href="{{ route('admin.dashboard') }}" class="block py-2.5 px-4 rounded hover:bg-slate-700 transition">
