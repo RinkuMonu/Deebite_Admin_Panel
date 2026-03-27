@@ -1,37 +1,49 @@
 @extends('admin.layout.main')
 @section('content')
-<div class="rounded-3xl border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-amber-50 p-6 shadow-lg shadow-rose-100/50">
-    <div class="mb-6 flex justify-between items-center">
-        <h2 class="text-lg font-semibold text-slate-900">Category Management</h2>
-        <button onclick="openModal('add')" class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800">+ Add Category</button>
+<div class="space-y-6">
+    <div class="rounded-xl border bg-white p-6 shadow-lg shadow-rose-100/50">
+        <div class="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
+            <h2 class="text-lg font-semibold text-slate-900">Category Management</h2>
+
+            <div class="flex flex-col gap-3 lg:flex-row lg:items-center">
+                <form class="flex flex-col gap-3 md:flex-row md:items-center">
+                    <input type="text" name="name" value="{{ request('name') }}" placeholder="Search by name"
+                        class="w-full rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm text-slate-700 md:w-64 focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+
+                    <select name="status"
+                        class="w-full rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm text-slate-700 md:w-44 focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                        <option value="">All Status</option>
+                        <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
+                        <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                    </select>
+
+                    <button type="submit" class="rounded-xl bg-[#f5185a] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#d8144f]">
+                        <i class="fa-solid fa-filter mr-1"></i> Filter
+                    </button>
+
+                    <a href="{{ route('admin.categories.index') }}"
+                       class="rounded-xl border border-rose-200 bg-white px-4 py-2 text-center text-sm font-medium text-slate-700 transition hover:bg-rose-50">
+                        <i class="fa-solid fa-rotate-left mr-1"></i> Reset
+                    </a>
+                </form>
+
+                <button onclick="openModal('add')" class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800">+ Add Category</button>
+            </div>
+        </div>
     </div>
 
-    <form class="mb-6 flex items-center gap-3 rounded-2xl border border-rose-100 bg-white/80 p-4 shadow-sm">
-        <input type="text" name="name" value="{{ request('name') }}" placeholder="Search by name" class="w-64 rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm text-slate-700 focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
-        <select name="status" class="rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm text-slate-700 focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
-            <option value="">All Status</option>
-            <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
-            <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
-        </select>
-        <button type="submit" class="rounded-xl bg-[#f5185a] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#d8144f]">
-            <i class="fa-solid fa-filter mr-1"></i>
-            Filter
-        </button>
-        <a href="{{ route('admin.categories.index') }}" class="rounded-xl bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-200">Clear</a>
-    </form>
-
-    <div class="overflow-hidden rounded-3xl border border-rose-100 bg-white shadow-lg shadow-rose-100/40">
+    <div class="overflow-hidden border border-rose-200 bg-rose-200 shadow-lg shadow-rose-100/40">
         <table class="w-full text-left text-sm">
-            <thead class="bg-gradient-to-r from-[#fff1c2] via-rose-50 to-white text-slate-900 uppercase text-xs tracking-wider">
+            <thead class="bg-rose-200 text-slate-900 uppercase text-xs tracking-wider">
                 <tr>
                     <th class="p-4"><i class="fa-solid fa-layer-group mr-2"></i>Name</th>
                     <th class="p-4"><i class="fa-solid fa-signal mr-2"></i>Status</th>
                     <th class="p-4 text-center"><i class="fa-solid fa-gear mr-2"></i>Action</th>
                 </tr>
             </thead>
-            <tbody class="divide-y">
+            <tbody class="divide-y divide-rose-200 bg-white">
                 @foreach($categories as $cat)
-                <tr class="transition duration-200 hover:bg-rose-50/80">
+                <tr class="transition duration-200 hover:bg-rose-50">
                     <td class="p-4 font-medium text-slate-900">{{ $cat->name }}</td>
                     <td class="p-4">
                         <form action="{{ route('admin.categories.toggle', $cat->id) }}" method="POST">
@@ -60,8 +72,8 @@
 </div>
 
 <div id="catModal" class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center z-50 p-4">
-    <div class="w-full max-w-md rounded-3xl border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-pink-100 p-6 shadow-2xl">
-        <div class="mb-5 flex items-center gap-3 border-b border-rose-100 pb-3">
+    <div class="w-full max-w-md rounded-3xl border border-rose-200 bg-rose-200 p-6 shadow-2xl">
+        <div class="mb-5 flex items-center gap-3 border-b border-rose-200 pb-3">
             <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-rose-100 text-rose-500">
                 <i class="fa-solid fa-layer-group"></i>
             </div>
@@ -79,8 +91,8 @@
 </div>
 
 <div id="itemModal" class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center z-50 p-4">
-    <div class="w-full max-w-2xl overflow-y-auto rounded-3xl border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-pink-100 p-6 shadow-2xl max-h-[80vh]">
-        <div class="mb-4 flex items-center gap-3 border-b border-rose-100 pb-3">
+    <div class="w-full max-w-2xl overflow-y-auto rounded-3xl border border-rose-200 bg-rose-200 p-6 shadow-2xl max-h-[80vh]">
+        <div class="mb-4 flex items-center gap-3 border-b border-rose-200 pb-3">
             <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-rose-100 text-rose-500">
                 <i class="fa-solid fa-bowl-food"></i>
             </div>

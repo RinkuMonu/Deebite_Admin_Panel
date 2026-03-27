@@ -3,76 +3,81 @@
 @section('page-title', 'Vendor List')
 
 @section('content')
-<div class="rounded-3xl border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-amber-50 p-6 shadow-lg shadow-rose-100/50">
+<div class="space-y-6">
+    <div class="rounded-xl border bg-white p-6 shadow-lg shadow-rose-100/50">
 
-    <!-- Header Row -->
-    <div class="flex justify-between items-center mb-6">
+        <!-- Header Row -->
+        <div class="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
 
-        <!-- Left Heading -->
-        <h2 class="text-lg font-semibold text-slate-900">
-            Vendors 
-        </h2>
+            <!-- Left Heading -->
+            <h2 class="text-lg font-semibold text-slate-900">
+                Vendors
+            </h2>
 
-        <!-- Right Side (Filters + Button) -->
-        <div class="flex items-center gap-4">
+            <!-- Right Side (Filters + Button) -->
+            <div class="flex flex-col gap-3 lg:flex-row lg:items-center">
 
-            <!-- Filters -->
-            <form action="{{ route('admin.vendors') }}" method="GET" 
-                  class="flex items-center gap-3">
+                <!-- Filters -->
+                <form action="{{ route('admin.vendors') }}" method="GET"
+                      class="flex flex-col gap-3 md:flex-row md:items-center">
 
-                <input type="text" name="search" value="{{ request('search') }}" 
-                    placeholder="Search owner or shop..."
-                    class="w-64 rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm text-slate-700
-                           focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                    <input type="text" name="search" value="{{ request('search') }}"
+                        placeholder="Search owner or shop..."
+                        class="w-full rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm text-slate-700 md:w-64
+                               focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
 
-                <select name="status" 
-                    class="rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm text-slate-700
-                           focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
-                    <option value="">All Status</option>
-                    <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
-                    <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
-                </select>
+                    <select name="status"
+                        class="w-full rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm text-slate-700 md:w-44
+                               focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                        <option value="">All Status</option>
+                        <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
+                        <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                    </select>
 
-                <button type="submit" 
-                    class="rounded-xl bg-[#f5185a] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#d8144f]">
-                    <i class="fa-solid fa-filter mr-1"></i>
-                    Filter
+                    <button type="submit"
+                        class="rounded-xl bg-[#f5185a] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#d8144f]">
+                        <i class="fa-solid fa-filter mr-1"></i>
+                        Filter
+                    </button>
+
+                    <a href="{{ route('admin.vendors') }}"
+                       class="rounded-xl border border-rose-200 bg-white px-4 py-2 text-center text-sm font-medium text-slate-700 transition hover:bg-rose-50">
+                        <i class="fa-solid fa-rotate-left mr-1"></i> Reset
+                    </a>
+                </form>
+
+                <!-- Add Button -->
+                <button onclick="toggleModal()"
+                    class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800">
+                    + Add Vendor
                 </button>
 
-            </form>
-
-            <!-- Add Button -->
-            <button onclick="toggleModal()" 
-                class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800">
-                + Add Vendor
-            </button>
-
+            </div>
         </div>
-
     </div>
 
-    <div class="overflow-hidden rounded-3xl border border-rose-100 bg-white shadow-lg shadow-rose-100/40">
+    <div class="overflow-hidden border border-rose-200 bg-rose-200 shadow-lg shadow-rose-100/40">
 
-    <!-- Table -->
-    <table class="w-full text-sm text-left">
+        <!-- Table -->
+        <table class="w-full text-sm text-left">
         
-        <!-- Header -->
-        <thead class="bg-gradient-to-r from-[#fff1c2] via-rose-50 to-white text-slate-900 uppercase text-xs tracking-wider">
-            <tr>
-                <th class="p-4"><i class="fa-regular fa-user mr-2"></i>Owner</th>
-                <th class="p-4"><i class="fa-solid fa-location-dot mr-2"></i>Location</th>
-                <th class="p-4"><i class="fa-solid fa-shop mr-2"></i>Shop</th>
-                <th class="p-4"><i class="fa-solid fa-id-card mr-2"></i>FSSAI</th>
-                <th class="p-4"><i class="fa-solid fa-signal mr-2"></i>Status</th>
-                <th class="p-4 text-center"><i class="fa-solid fa-gear mr-2"></i>Action</th>
-            </tr>
-        </thead>
+            <!-- Header -->
+            <thead class="bg-rose-200 text-slate-900 uppercase text-xs tracking-wider">
+                <tr>
+                    <th class="p-4"><i class="fa-regular fa-user mr-2"></i>Owner</th>
+                    <th class="p-4"><i class="fa-solid fa-location-dot mr-2"></i>Location</th>
+                    <th class="p-4"><i class="fa-solid fa-shop mr-2"></i>Shop</th>
+                    <th class="p-4"><i class="fa-solid fa-id-card mr-2"></i>FSSAI</th>
+                    <th class="p-4"><i class="fa-solid fa-signal mr-2"></i>Status</th>
+                    <th class="p-4 text-center"><i class="fa-solid fa-gear mr-2"></i>Action</th>
+                </tr>
+            </thead>
 
-        <!-- Body -->
-        <tbody class="divide-y">
+            <!-- Body -->
+            <tbody class="divide-y divide-rose-200 bg-white">
 
-            @foreach($vendors as $vendor)
-            <tr class="transition duration-200 hover:bg-rose-50/80">
+                @foreach($vendors as $vendor)
+                <tr class="transition duration-200 hover:bg-rose-50">
 
                 <!-- Owner -->
                 <td class="p-4 font-medium text-slate-900">
@@ -135,14 +140,14 @@
 
                 </td>
 
-            </tr>
-            @endforeach
+                </tr>
+                @endforeach
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
 
-</div>
+    </div>
 
     <div class="mt-4">{{ $vendors->links() }}</div>
 </div>
@@ -150,10 +155,10 @@
 <div id="vendorModal" class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center z-50 p-4">
 
     <!-- Modal Card -->
-    <div class="w-full max-w-3xl overflow-y-auto rounded-3xl border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-pink-100 shadow-2xl max-h-[90vh]">
+    <div class="w-full max-w-3xl overflow-y-auto rounded-3xl border border-rose-200 bg-rose-200 shadow-2xl max-h-[90vh]">
 
         <!-- Header -->
-        <div class="flex justify-between items-center px-6 py-4 border-b border-rose-100 bg-gradient-to-r from-rose-100 via-pink-50 to-white">
+        <div class="flex justify-between items-center px-6 py-4 border-b border-rose-200 bg-rose-200">
             <h3 class="text-lg font-semibold text-slate-700 flex items-center gap-2">
                 <i class="fa-solid fa-user-plus text-rose-500"></i>
                 Register New Vendor
