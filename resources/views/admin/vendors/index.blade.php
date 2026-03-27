@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <div class="overflow-hidden border border-rose-200 bg-rose-200 shadow-lg shadow-rose-100/40">
+    <div class="rounded-xl overflow-hidden border border-rose-200 bg-rose-200 shadow-lg shadow-rose-100/40">
 
         <!-- Table -->
         <table class="w-full text-sm text-left">
@@ -152,15 +152,15 @@
     <div class="mt-4">{{ $vendors->links() }}</div>
 </div>
 
-<div id="vendorModal" class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center z-50 p-4">
+<div id="vendorModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4">
 
     <!-- Modal Card -->
-    <div class="w-full max-w-3xl overflow-y-auto rounded-3xl border border-rose-200 bg-rose-200 shadow-2xl max-h-[90vh]">
+    <div class="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-900/10">
 
         <!-- Header -->
-        <div class="flex justify-between items-center px-6 py-4 border-b border-rose-200 bg-rose-200">
-            <h3 class="text-lg font-semibold text-slate-700 flex items-center gap-2">
-                <i class="fa-solid fa-user-plus text-rose-500"></i>
+        <div class="flex items-center justify-between border-b border-slate-200 bg-white px-6 py-4">
+            <h3 class="flex items-center gap-2 text-lg font-semibold text-slate-900">
+                <i class="fa-solid fa-user-plus text-slate-600"></i>
                 Register New Vendor
             </h3>
             <button onclick="toggleModal()" class="text-gray-500 hover:text-gray-700 text-xl">&times;</button>
@@ -171,22 +171,22 @@
             @csrf
             <input type="hidden" name="vendor_id" id="vendor_id">
 
-            <div class="mb-6 rounded-2xl border border-rose-100 bg-white/80 p-4 shadow-sm">
+            <div class="mb-6 rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm shadow-slate-900/5">
                 <div class="grid grid-cols-1 gap-3 md:grid-cols-3">
-                    <div class="vendor-step-indicator flex min-w-0 items-center gap-3 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3" data-step-indicator="1">
+                    <div class="vendor-step-indicator flex min-w-0 items-center gap-3 rounded-2xl border border-rose-200 bg-white px-4 py-3" data-step-indicator="1">
                         <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-rose-500 text-sm font-semibold text-white shadow-sm">1</div>
                         <div class="min-w-0">
                             <p class="text-sm font-semibold text-slate-700">Owner Details</p>
                         </div>
                     </div>
-                    <div class="vendor-step-indicator flex min-w-0 items-center gap-3 rounded-2xl border border-rose-100 bg-rose-50/60 px-4 py-3" data-step-indicator="2">
-                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-rose-200 text-sm font-semibold text-rose-700">2</div>
+                    <div class="vendor-step-indicator flex min-w-0 items-center gap-3 rounded-2xl border border-slate-200 bg-slate-100 px-4 py-3" data-step-indicator="2">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-rose-100 text-sm font-semibold text-rose-700">2</div>
                         <div class="min-w-0">
                             <p class="text-sm font-semibold text-slate-700">Shop Details</p>
                         </div>
                     </div>
-                    <div class="vendor-step-indicator flex min-w-0 items-center gap-3 rounded-2xl border border-rose-100 bg-rose-50/60 px-4 py-3" data-step-indicator="3">
-                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-rose-200 text-sm font-semibold text-rose-700">3</div>
+                    <div class="vendor-step-indicator flex min-w-0 items-center gap-3 rounded-2xl border border-slate-200 bg-slate-100 px-4 py-3" data-step-indicator="3">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-rose-100 text-sm font-semibold text-rose-700">3</div>
                         <div class="min-w-0">
                             <p class="text-sm font-semibold text-slate-700">Documents</p>
                         </div>
@@ -196,9 +196,9 @@
 
             <div class="space-y-6">
                 <section class="vendor-step-panel" data-step-panel="1">
-                    <div class="rounded-3xl border border-rose-100 bg-white/90 p-5 shadow-sm">
-                        <div class="mb-5 flex items-center gap-3 border-b border-rose-100 pb-3">
-                            <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-rose-100 text-rose-500">
+                    <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm shadow-slate-900/5">
+                        <div class="mb-5 flex items-center gap-3 border-b border-slate-200 pb-3">
+                            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-600">
                                 <i class="fa-solid fa-user"></i>
                             </div>
                             <div>
@@ -210,25 +210,25 @@
                             <div>
                                 <label class="text-sm font-medium text-slate-600">Owner Name *</label>
                                 <input type="text" name="name" id="edit_name" value="{{ old('name') }}"
-                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 px-3 py-2.5 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                                    class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200">
                             </div>
 
                             <div>
                                 <label class="text-sm font-medium text-slate-600">Email *</label>
                                 <input type="email" name="email" id="edit_email" value="{{ old('email') }}"
-                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 px-3 py-2.5 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                                    class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200">
                             </div>
 
                             <div>
                                 <label class="text-sm font-medium text-slate-600">Phone Number *</label>
                                 <input type="text" name="number" id="edit_number" value="{{ old('number') }}"
-                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 px-3 py-2.5 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                                    class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200">
                             </div>
 
                             <div>
                                 <label class="text-sm font-medium text-slate-600">Password</label>
                                 <input type="text" name="password" id="edit_password"
-                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 px-3 py-2.5 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200"
+                                    class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200"
                                     placeholder="Leave blank to keep same">
                             </div>
                         </div>
@@ -236,9 +236,9 @@
                 </section>
 
                 <section class="vendor-step-panel hidden" data-step-panel="2">
-                    <div class="rounded-3xl border border-rose-100 bg-white/90 p-5 shadow-sm">
-                        <div class="mb-5 flex items-center gap-3 border-b border-rose-100 pb-3">
-                            <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-rose-100 text-rose-500">
+                    <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm shadow-slate-900/5">
+                        <div class="mb-5 flex items-center gap-3 border-b border-slate-200 pb-3">
+                            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-600">
                                 <i class="fa-solid fa-shop"></i>
                             </div>
                             <div>
@@ -250,19 +250,19 @@
                             <div class="md:col-span-2">
                                 <label class="text-sm font-medium text-slate-600">Shop Name *</label>
                                 <input type="text" name="shop_name" id="edit_shop_name" value="{{ old('shop_name') }}"
-                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 px-3 py-2.5 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                                    class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200">
                             </div>
 
                             <div>
                                 <label class="text-sm font-medium text-slate-600">FSSAI Number</label>
                                 <input type="text" name="fssai_number" id="edit_fssai_number" value="{{ old('fssai_number') }}"
-                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 px-3 py-2.5 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                                    class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200">
                             </div>
 
                             <div>
                                 <label class="text-sm font-medium text-slate-600">Document Type *</label>
                                 <select name="document_type" id="edit_document_type"
-                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 px-3 py-2.5 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                                    class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200">
                                     <option value="Aadhar">Aadhar Card</option>
                                     <option value="PAN">PAN Card</option>
                                     <option value="FSSAI">FSSAI License</option>
@@ -273,9 +273,9 @@
                 </section>
 
                 <section class="vendor-step-panel hidden" data-step-panel="3">
-                    <div class="rounded-3xl border border-rose-100 bg-white/90 p-5 shadow-sm">
-                        <div class="mb-5 flex items-center gap-3 border-b border-rose-100 pb-3">
-                            <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-rose-100 text-rose-500">
+                    <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm shadow-slate-900/5">
+                        <div class="mb-5 flex items-center gap-3 border-b border-slate-200 pb-3">
+                            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-600">
                                 <i class="fa-solid fa-file-lines"></i>
                             </div>
                             <div>
@@ -287,15 +287,15 @@
                             <div>
                                 <label class="text-sm font-medium text-slate-600">Profile Photo</label>
                                 <input type="file" name="profile_photo" id="profile_photo_input"
-                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 p-2 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
-                                <div id="profile_preview" class="mt-2 text-xs font-medium text-rose-500"></div>
+                                    class="mt-1 w-full rounded-xl border border-slate-300 bg-white p-2 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200">
+                                <div id="profile_preview" class="mt-2 text-xs font-medium text-slate-500"></div>
                             </div>
 
                             <div>
                                 <label class="text-sm font-medium text-slate-600">Document File</label>
                                 <input type="file" name="document_file" id="document_file_input"
-                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 p-2 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
-                                <div id="document_preview" class="mt-2 text-xs font-medium text-rose-500"></div>
+                                    class="mt-1 w-full rounded-xl border border-slate-300 bg-white p-2 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200">
+                                <div id="document_preview" class="mt-2 text-xs font-medium text-slate-500"></div>
                             </div>
                         </div>
                     </div>
@@ -430,14 +430,14 @@
                 const bubble = indicator.querySelector('div');
 
                 indicator.classList.toggle('border-rose-200', isActive);
-                indicator.classList.toggle('bg-rose-50', isActive);
-                indicator.classList.toggle('border-rose-100', !isActive);
-                indicator.classList.toggle('bg-rose-50/60', !isActive);
+                indicator.classList.toggle('bg-white', isActive);
+                indicator.classList.toggle('border-slate-200', !isActive);
+                indicator.classList.toggle('bg-slate-100', !isActive);
 
                 if (bubble) {
                     bubble.classList.toggle('bg-rose-500', isActive);
                     bubble.classList.toggle('text-white', isActive);
-                    bubble.classList.toggle('bg-rose-200', !isActive);
+                    bubble.classList.toggle('bg-rose-100', !isActive);
                     bubble.classList.toggle('text-rose-700', !isActive);
                 }
             });

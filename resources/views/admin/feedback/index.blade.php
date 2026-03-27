@@ -8,7 +8,7 @@
         <h2 class="text-lg font-semibold text-slate-900">Customer Feedback</h2>
     </div>
 
-    <div class="overflow-hidden border border-rose-200 bg-rose-200 shadow-lg shadow-rose-100/30">
+    <div class="rounded-xl overflow-hidden border border-rose-200 bg-rose-200 shadow-lg shadow-rose-100/30">
         <div class="overflow-x-auto">
             <table class="w-full border-collapse text-left">
                 <thead class="bg-rose-200 text-xs uppercase tracking-wider text-slate-900">

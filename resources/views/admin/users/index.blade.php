@@ -38,7 +38,7 @@
         </form>
     </div>
 
-    <div class="overflow-hidden border border-rose-200 bg-rose-200 shadow-lg shadow-rose-100/30">
+    <div class="rounded-xl overflow-hidden border border-rose-200 bg-rose-200 shadow-lg shadow-rose-100/30">
         <!-- Table -->
         <table class="w-full text-sm text-left">
 
