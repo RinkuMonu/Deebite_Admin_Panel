@@ -11,10 +11,6 @@ use App\Http\Controllers\FoodController;
 use App\Http\Controllers\CategoryController;
 use Kreait\Firebase\Factory;
 
-Route::get('/fcm-test', function () {
-    return view('welcome');
-});
-
 
 Route::get('/', function () {
     return redirect()->route('auth.login');
