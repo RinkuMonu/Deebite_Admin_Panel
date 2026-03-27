@@ -2,38 +2,38 @@
 @section('title', 'Track ' . $partner->name)
 
 @section('content')
-<div class="bg-white p-6 rounded-lg shadow">
-    <div class="flex items-center justify-between mb-4 border-b pb-4">
+<div class="rounded-3xl border border-rose-100/80 bg-gradient-to-br from-rose-50 via-[#fffdf8] to-amber-50 p-6 shadow-lg shadow-rose-100/40">
+    <div class="mb-4 flex items-center justify-between border-b border-rose-100 pb-4">
         <div>
-            <h1 class="text-2xl font-bold text-slate-800">{{ $partner->name }}</h1>
+            <h1 class="text-2xl font-bold text-slate-900">{{ $partner->name }}</h1>
             <p class="text-slate-500">Live Location Tracking</p>
         </div>
         <div class="text-right">
             <p class="text-xs uppercase text-slate-400">Current Status</p>
-            <span class="px-3 py-1 rounded-full text-xs font-bold {{ $partner->is_active ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' }}">
+            <span class="px-3 py-1 rounded-full text-xs font-bold {{ $partner->is_active ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700' }}">
                 {{ $partner->is_active ? 'Online' : 'Offline' }}
             </span>
         </div>
     </div>
 
-    <div id="single-map" style="height: 450px; width: 100%;" class="rounded shadow-inner border"></div>
+    <div id="single-map" style="height: 450px; width: 100%;" class="rounded-3xl border border-rose-100 shadow-inner"></div>
 
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
-        <div class="p-4 border rounded bg-slate-50">
+        <div class="rounded-2xl border border-rose-100 bg-white/80 p-4 shadow-sm">
             <span class="text-xs text-slate-400 block uppercase">Contact Number</span>
             <span class="font-bold text-slate-700">{{ $partner->number }}</span>
         </div>
-        <div class="p-4 border rounded bg-slate-50">
+        <div class="rounded-2xl border border-rose-100 bg-white/80 p-4 shadow-sm">
             <span class="text-xs text-slate-400 block uppercase">Latitude</span>
             <span class="font-bold text-slate-700 font-mono">{{ $partner->latitude }}</span>
         </div>
-        <div class="p-4 border rounded bg-slate-50">
+        <div class="rounded-2xl border border-rose-100 bg-white/80 p-4 shadow-sm">
             <span class="text-xs text-slate-400 block uppercase">Longitude</span>
             <span class="font-bold text-slate-700 font-mono">{{ $partner->longitude }}</span>
         </div>
-        <div class="p-4 border rounded bg-indigo-50">
-            <span class="text-xs text-indigo-400 block uppercase">Last Updated</span>
-            <span class="font-bold text-indigo-700">{{ $partner->updated_at->diffForHumans() }}</span>
+        <div class="rounded-2xl border border-amber-100 bg-amber-50/80 p-4 shadow-sm">
+            <span class="block text-xs uppercase text-amber-500">Last Updated</span>
+            <span class="font-bold text-amber-800">{{ $partner->updated_at->diffForHumans() }}</span>
         </div>
     </div>
 </div>

@@ -2,13 +2,13 @@
 @section('title', 'Global Delivery Tracking')
 
 @section('content')
-<div class="bg-white p-4 rounded-lg shadow">
+<div class="rounded-3xl border border-rose-100/80 bg-gradient-to-br from-rose-50 via-[#fffdf8] to-amber-50 p-4 shadow-lg shadow-rose-100/40">
     <div class="flex justify-between items-center mb-4">
-        <h2 class="text-lg font-bold">Live Delivery Network (All Partners)</h2>
-        <a href="{{ route('admin.delivery-partners') }}" class="text-sm text-indigo-600 font-bold">← Back to List</a>
+        <h2 class="text-lg font-bold text-slate-900">Live Delivery Network (All Partners)</h2>
+        <a href="{{ route('admin.delivery-partners') }}" class="text-sm font-bold text-[#f5185a] transition hover:text-slate-900">&larr; Back to List</a>
     </div>
 
-    <div id="global-map" style="height: 600px; width: 100%;" class="rounded-lg border"></div>
+    <div id="global-map" style="height: 600px; width: 100%;" class="rounded-3xl border border-rose-100 shadow-inner"></div>
 </div>
 
 <script>
@@ -46,13 +46,13 @@
             marker.addListener("click", () => {
                 infoWindow.setContent(`
                     <div style="padding:10px; line-height:1.6;">
-                        <b style="font-size:16px; color:#4F46E5;">${partner.name}</b><br>
+                        <b style="font-size:16px; color:#F5185A;">${partner.name}</b><br>
                         <b>Phone:</b> ${partner.number || 'N/A'}<br>
-                        <b>Status:</b> <span style="color: ${partner.is_active ? 'green' : 'red'}">${partner.is_active ? 'Online' : 'Offline'}</span><br>
+                        <b>Status:</b> <span style="color: ${partner.is_active ? '#92400E' : '#BE123C'}">${partner.is_active ? 'Online' : 'Offline'}</span><br>
                         <hr style="margin: 5px 0;">
                         <a href="/admin/delivery-partners/${partner.id}/track" 
-                           style="display:inline-block; margin-top:5px; background:#4F46E5; color:white; padding:4px 8px; border-radius:4px; text-decoration:none; font-size:12px;">
-                           Track Live
+                        style="display:inline-block; margin-top:5px; background:#F5185A; color:white; padding:4px 8px; border-radius:4px; text-decoration:none; font-size:12px;">
+                        Track Live
                         </a>
                     </div>
                 `);
