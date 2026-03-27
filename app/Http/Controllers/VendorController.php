@@ -14,15 +14,26 @@ class VendorController extends Controller
     public function index(Request $request)
     {
         $query = User::where('role', 'vendor')->with('vendorDetail');
+
         if ($request->filled('search')) {
-            $searchTerm = $request->search;
-            $query->where(function($q) use ($searchTerm) {
-                $q->where('name', 'like', "%$searchTerm%")
-                ->orWhereHas('vendorDetail', function($q) use ($searchTerm) {
-                    $q->where('shop_name', 'like', "%$searchTerm%");
-                });
+            $searchTerm = trim($request->search);
+
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('name', 'like', "%{$searchTerm}%")
+                    ->orWhere('email', 'like', "%{$searchTerm}%")
+                    ->orWhere('number', 'like', "%{$searchTerm}%")
+                    ->orWhereHas('vendorDetail', function ($vendorDetailQuery) use ($searchTerm) {
+                        $vendorDetailQuery->where('shop_name', 'like', "%{$searchTerm}%")
+                            ->orWhere('fssai_number', 'like', "%{$searchTerm}%")
+                            ->orWhere('document_type', 'like', "%{$searchTerm}%");
+                    });
             });
         }
+
+        if ($request->filled('status')) {
+            $query->where('is_active', $request->status === 'active');
+        }
+
         $vendors = $query->latest()->paginate(10)->withQueryString();
 
         return view('admin.vendors.index', compact('vendors'));
