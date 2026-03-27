@@ -3,13 +3,13 @@
 @section('page-title', 'Vendor List')
 
 @section('content')
-<div class="bg-white p-6 rounded-lg shadow">
+<div class="rounded-3xl border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-amber-50 p-6 shadow-lg shadow-rose-100/50">
 
     <!-- Header Row -->
     <div class="flex justify-between items-center mb-6">
 
         <!-- Left Heading -->
-        <h2 class="text-lg font-semibold text-slate-700">
+        <h2 class="text-lg font-semibold text-slate-900">
             Vendors 
         </h2>
 
@@ -22,20 +22,19 @@
 
                 <input type="text" name="search" value="{{ request('search') }}" 
                     placeholder="Search owner or shop..."
-                    class="border border-slate-200 px-3 py-2 rounded-lg w-64 text-sm 
-                           focus:outline-none focus:ring-1 focus:ring-indigo-400">
+                    class="w-64 rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm text-slate-700
+                           focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
 
                 <select name="status" 
-                    class="border border-slate-200 px-3 py-2 rounded-lg text-sm 
-                           focus:outline-none focus:ring-1 focus:ring-indigo-400">
+                    class="rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm text-slate-700
+                           focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
                     <option value="">All Status</option>
                     <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
                     <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
                 </select>
 
                 <button type="submit" 
-                    class="bg-indigo-600 hover:bg-indigo-700 text-white 
-                           px-4 py-2 rounded-lg text-sm transition">
+                    class="rounded-xl bg-[#f5185a] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#d8144f]">
                     <i class="fa-solid fa-filter mr-1"></i>
                     Filter
                 </button>
@@ -44,8 +43,7 @@
 
             <!-- Add Button -->
             <button onclick="toggleModal()" 
-                class="bg-green-600 hover:bg-green-700 text-white 
-                       px-4 py-2 rounded-lg text-sm transition">
+                class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800">
                 + Add Vendor
             </button>
 
@@ -53,13 +51,13 @@
 
     </div>
 
-    <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
+    <div class="overflow-hidden rounded-3xl border border-rose-100 bg-white shadow-lg shadow-rose-100/40">
 
     <!-- Table -->
     <table class="w-full text-sm text-left">
         
         <!-- Header -->
-        <thead class="bg-gradient-to-r from-slate-100 to-slate-50 text-slate-700 uppercase text-xs tracking-wider">
+        <thead class="bg-gradient-to-r from-[#fff1c2] via-rose-50 to-white text-slate-900 uppercase text-xs tracking-wider">
             <tr>
                 <th class="p-4"><i class="fa-regular fa-user mr-2"></i>Owner</th>
                 <th class="p-4"><i class="fa-solid fa-location-dot mr-2"></i>Location</th>
@@ -74,10 +72,10 @@
         <tbody class="divide-y">
 
             @foreach($vendors as $vendor)
-            <tr class="hover:bg-blue-200 transition duration-200">
+            <tr class="transition duration-200 hover:bg-rose-50/80">
 
                 <!-- Owner -->
-                <td class="p-4 font-medium text-slate-800">
+                <td class="p-4 font-medium text-slate-900">
                     {{ $vendor->name }}
                 </td>
 
@@ -87,7 +85,7 @@
                 </td>
 
                 <!-- Shop -->
-                <td class="p-4 text-slate-700">
+                <td class="p-4 text-slate-800">
                     {{ $vendor->vendorDetail->shop_name ?? 'N/A' }}
                 </td>
 
@@ -100,8 +98,8 @@
                 <td class="p-4">
                     <span class="px-3 py-1 rounded-full text-xs font-semibold 
                         {{ $vendor->is_active 
-                            ? 'bg-green-100 text-green-700' 
-                            : 'bg-red-100 text-red-700' }}">
+                            ? 'bg-amber-100 text-amber-800' 
+                            : 'bg-rose-100 text-rose-700' }}">
                         <i class="fa-solid {{ $vendor->is_active ? 'fa-circle-check' : 'fa-circle-xmark' }} mr-1"></i>
                         {{ $vendor->is_active ? 'Active' : 'Inactive' }}
                     </span>
@@ -112,7 +110,7 @@
 
                     <!-- View -->
                     <a href="{{ route('admin.vendors.show', $vendor->id) }}" 
-                       class="text-blue-600 hover:text-blue-800 transition"
+                       class="text-slate-700 transition hover:text-[#f5185a]"
                        title="View">
                         <i class="fa-regular fa-eye text-lg"></i>
                     </a>
@@ -130,7 +128,7 @@
                             'profile_photo' => $vendor->vendorDetail->profile_photo ?? '',
                             'document_file' => $vendor->vendorDetail->document_file ?? ''
                         ]) }})"
-                        class="text-indigo-600 hover:text-indigo-800 transition"
+                        class="text-slate-700 transition hover:text-[#f5185a]"
                         title="Edit">
                         <i class="fa-regular fa-pen-to-square text-lg"></i>
                     </button>
@@ -149,15 +147,15 @@
     <div class="mt-4">{{ $vendors->links() }}</div>
 </div>
 
-<div id="vendorModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+<div id="vendorModal" class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center z-50 p-4">
 
     <!-- Modal Card -->
-    <div class="bg-white rounded-2xl w-full max-w-2xl shadow-2xl overflow-y-auto max-h-[90vh]">
+    <div class="w-full max-w-3xl overflow-y-auto rounded-3xl border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-pink-100 shadow-2xl max-h-[90vh]">
 
         <!-- Header -->
-        <div class="flex justify-between items-center px-6 py-4 border-b bg-gradient-to-r from-slate-100 to-slate-50">
+        <div class="flex justify-between items-center px-6 py-4 border-b border-rose-100 bg-gradient-to-r from-rose-100 via-pink-50 to-white">
             <h3 class="text-lg font-semibold text-slate-700 flex items-center gap-2">
-                <i class="fa-solid fa-user-plus text-indigo-600"></i>
+                <i class="fa-solid fa-user-plus text-rose-500"></i>
                 Register New Vendor
             </h3>
             <button onclick="toggleModal()" class="text-gray-500 hover:text-gray-700 text-xl">&times;</button>
@@ -168,92 +166,162 @@
             @csrf
             <input type="hidden" name="vendor_id" id="vendor_id">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-                <!-- Owner Section -->
-                <div class="col-span-2 flex items-center gap-2 text-indigo-600 font-semibold border-b pb-1">
-                    <i class="fa-solid fa-user"></i> Owner Details
+            <div class="mb-6 rounded-2xl border border-rose-100 bg-white/80 p-4 shadow-sm">
+                <div class="grid grid-cols-1 gap-3 md:grid-cols-3">
+                    <div class="vendor-step-indicator flex min-w-0 items-center gap-3 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3" data-step-indicator="1">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-rose-500 text-sm font-semibold text-white shadow-sm">1</div>
+                        <div class="min-w-0">
+                            <p class="text-sm font-semibold text-slate-700">Owner Details</p>
+                        </div>
+                    </div>
+                    <div class="vendor-step-indicator flex min-w-0 items-center gap-3 rounded-2xl border border-rose-100 bg-rose-50/60 px-4 py-3" data-step-indicator="2">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-rose-200 text-sm font-semibold text-rose-700">2</div>
+                        <div class="min-w-0">
+                            <p class="text-sm font-semibold text-slate-700">Shop Details</p>
+                        </div>
+                    </div>
+                    <div class="vendor-step-indicator flex min-w-0 items-center gap-3 rounded-2xl border border-rose-100 bg-rose-50/60 px-4 py-3" data-step-indicator="3">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-rose-200 text-sm font-semibold text-rose-700">3</div>
+                        <div class="min-w-0">
+                            <p class="text-sm font-semibold text-slate-700">Documents</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <div>
-                    <label class="text-sm text-slate-600">Owner Name *</label>
-                    <input type="text" name="name" id="edit_name" value="{{ old('name') }}" 
-                        class="w-full border border-slate-200 px-3 py-2 rounded-lg text-sm focus:ring-1 focus:ring-indigo-400">
-                </div>
+            <div class="space-y-6">
+                <section class="vendor-step-panel" data-step-panel="1">
+                    <div class="rounded-3xl border border-rose-100 bg-white/90 p-5 shadow-sm">
+                        <div class="mb-5 flex items-center gap-3 border-b border-rose-100 pb-3">
+                            <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-rose-100 text-rose-500">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-semibold text-slate-700">Owner Details</h4>
+                            </div>
+                        </div>
 
-                <div>
-                    <label class="text-sm text-slate-600">Email *</label>
-                    <input type="email" name="email" id="edit_email" value="{{ old('email') }}" 
-                        class="w-full border border-slate-200 px-3 py-2 rounded-lg text-sm focus:ring-1 focus:ring-indigo-400">
-                </div>
+                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                            <div>
+                                <label class="text-sm font-medium text-slate-600">Owner Name *</label>
+                                <input type="text" name="name" id="edit_name" value="{{ old('name') }}"
+                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 px-3 py-2.5 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                            </div>
 
-                <div>
-                    <label class="text-sm text-slate-600">Phone Number *</label>
-                    <input type="text" name="number" id="edit_number" value="{{ old('number') }}" 
-                        class="w-full border border-slate-200 px-3 py-2 rounded-lg text-sm focus:ring-1 focus:ring-indigo-400">
-                </div>
+                            <div>
+                                <label class="text-sm font-medium text-slate-600">Email *</label>
+                                <input type="email" name="email" id="edit_email" value="{{ old('email') }}"
+                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 px-3 py-2.5 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                            </div>
 
-                <div>
-                    <label class="text-sm text-slate-600">Password</label>
-                    <input type="text" name="password" id="edit_password" 
-                        class="w-full border border-slate-200 px-3 py-2 rounded-lg text-sm focus:ring-1 focus:ring-indigo-400"
-                        placeholder="Leave blank to keep same">
-                </div>
+                            <div>
+                                <label class="text-sm font-medium text-slate-600">Phone Number *</label>
+                                <input type="text" name="number" id="edit_number" value="{{ old('number') }}"
+                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 px-3 py-2.5 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                            </div>
 
-                <!-- Shop Section -->
-                <div class="col-span-2 flex items-center gap-2 text-indigo-600 font-semibold border-b pb-1 mt-3">
-                    <i class="fa-solid fa-shop"></i> Shop & Documents
-                </div>
+                            <div>
+                                <label class="text-sm font-medium text-slate-600">Password</label>
+                                <input type="text" name="password" id="edit_password"
+                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 px-3 py-2.5 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200"
+                                    placeholder="Leave blank to keep same">
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-                <div class="col-span-2">
-                    <label class="text-sm text-slate-600">Shop Name *</label>
-                    <input type="text" name="shop_name" id="edit_shop_name" value="{{ old('shop_name') }}" 
-                        class="w-full border border-slate-200 px-3 py-2 rounded-lg text-sm focus:ring-1 focus:ring-indigo-400">
-                </div>
+                <section class="vendor-step-panel hidden" data-step-panel="2">
+                    <div class="rounded-3xl border border-rose-100 bg-white/90 p-5 shadow-sm">
+                        <div class="mb-5 flex items-center gap-3 border-b border-rose-100 pb-3">
+                            <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-rose-100 text-rose-500">
+                                <i class="fa-solid fa-shop"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-semibold text-slate-700">Shop Details</h4>
+                            </div>
+                        </div>
 
-                <div>
-                    <label class="text-sm text-slate-600">FSSAI Number</label>
-                    <input type="text" name="fssai_number" id="edit_fssai_number" value="{{ old('fssai_number') }}" 
-                        class="w-full border border-slate-200 px-3 py-2 rounded-lg text-sm focus:ring-1 focus:ring-indigo-400">
-                </div>
+                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                            <div class="md:col-span-2">
+                                <label class="text-sm font-medium text-slate-600">Shop Name *</label>
+                                <input type="text" name="shop_name" id="edit_shop_name" value="{{ old('shop_name') }}"
+                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 px-3 py-2.5 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                            </div>
 
-                <div>
-                    <label class="text-sm text-slate-600">Document Type *</label>
-                    <select name="document_type" id="edit_document_type" 
-                        class="w-full border border-slate-200 px-3 py-2 rounded-lg text-sm focus:ring-1 focus:ring-indigo-400">
-                        <option value="Aadhar">Aadhar Card</option>
-                        <option value="PAN">PAN Card</option>
-                        <option value="FSSAI">FSSAI License</option>
-                    </select>
-                </div>
+                            <div>
+                                <label class="text-sm font-medium text-slate-600">FSSAI Number</label>
+                                <input type="text" name="fssai_number" id="edit_fssai_number" value="{{ old('fssai_number') }}"
+                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 px-3 py-2.5 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                            </div>
 
-                <div>
-                    <label class="text-sm text-slate-600">Profile Photo</label>
-                    <input type="file" name="profile_photo" id="profile_photo_input" 
-                        class="w-full border border-slate-200 p-1 rounded-lg text-sm">
-                    <div id="profile_preview" class="mt-1 text-xs text-indigo-600"></div>
-                </div>
+                            <div>
+                                <label class="text-sm font-medium text-slate-600">Document Type *</label>
+                                <select name="document_type" id="edit_document_type"
+                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 px-3 py-2.5 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                                    <option value="Aadhar">Aadhar Card</option>
+                                    <option value="PAN">PAN Card</option>
+                                    <option value="FSSAI">FSSAI License</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-                <div>
-                    <label class="text-sm text-slate-600">Document File</label>
-                    <input type="file" name="document_file" id="document_file_input" 
-                        class="w-full border border-slate-200 p-1 rounded-lg text-sm">
-                    <div id="document_preview" class="mt-1 text-xs text-indigo-600"></div>
-                </div>
+                <section class="vendor-step-panel hidden" data-step-panel="3">
+                    <div class="rounded-3xl border border-rose-100 bg-white/90 p-5 shadow-sm">
+                        <div class="mb-5 flex items-center gap-3 border-b border-rose-100 pb-3">
+                            <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-rose-100 text-rose-500">
+                                <i class="fa-solid fa-file-lines"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-semibold text-slate-700">Documents</h4>
+                            </div>
+                        </div>
 
+                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                            <div>
+                                <label class="text-sm font-medium text-slate-600">Profile Photo</label>
+                                <input type="file" name="profile_photo" id="profile_photo_input"
+                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 p-2 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                                <div id="profile_preview" class="mt-2 text-xs font-medium text-rose-500"></div>
+                            </div>
+
+                            <div>
+                                <label class="text-sm font-medium text-slate-600">Document File</label>
+                                <input type="file" name="document_file" id="document_file_input"
+                                    class="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/40 p-2 text-sm focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                                <div id="document_preview" class="mt-2 text-xs font-medium text-rose-500"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
 
             <!-- Buttons -->
-            <div class="mt-6 flex gap-3">
+            <div class="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div class="flex gap-3">
+                    <button type="button" onclick="toggleModal()"
+                        class="rounded-xl bg-rose-100 px-5 py-2.5 text-sm font-medium text-rose-700 transition hover:bg-rose-200">
+                        Cancel
+                    </button>
+
+                    <button type="button" id="prevStepBtn"
+                        class="hidden rounded-xl border border-rose-200 bg-white px-5 py-2.5 text-sm font-medium text-rose-600 transition hover:bg-rose-50">
+                        <i class="fa-solid fa-arrow-left mr-1"></i> Previous
+                    </button>
+                </div>
+
+                <div class="flex gap-3 sm:ml-auto">
+                    <button type="button" id="nextStepBtn"
+                        class="rounded-xl bg-rose-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-rose-600">
+                        Next Step <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+
                 <button type="submit" id="submitBtn" 
-                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold flex-1 transition">
+                    class="hidden rounded-xl bg-rose-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-rose-600">
                     <i class="fa-solid fa-check mr-1"></i> Register Vendor
                 </button>
-
-                <button type="button" onclick="toggleModal()" 
-                    class="bg-gray-200 hover:bg-gray-300 px-5 py-2.5 rounded-lg text-sm transition">
-                    Cancel
-                </button>
+                </div>
             </div>
 
         </form>
@@ -334,5 +402,66 @@
             modal.classList.add('flex');
         });
     @endif
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const modal = document.getElementById('vendorModal');
+        const stepPanels = Array.from(document.querySelectorAll('[data-step-panel]'));
+        const stepIndicators = Array.from(document.querySelectorAll('[data-step-indicator]'));
+        const nextBtn = document.getElementById('nextStepBtn');
+        const prevBtn = document.getElementById('prevStepBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        let currentStep = 1;
+
+        function setVendorStep(step) {
+            currentStep = step;
+
+            stepPanels.forEach((panel) => {
+                panel.classList.toggle('hidden', Number(panel.dataset.stepPanel) !== step);
+            });
+
+            stepIndicators.forEach((indicator) => {
+                const isActive = Number(indicator.dataset.stepIndicator) === step;
+                const bubble = indicator.querySelector('div');
+
+                indicator.classList.toggle('border-rose-200', isActive);
+                indicator.classList.toggle('bg-rose-50', isActive);
+                indicator.classList.toggle('border-rose-100', !isActive);
+                indicator.classList.toggle('bg-rose-50/60', !isActive);
+
+                if (bubble) {
+                    bubble.classList.toggle('bg-rose-500', isActive);
+                    bubble.classList.toggle('text-white', isActive);
+                    bubble.classList.toggle('bg-rose-200', !isActive);
+                    bubble.classList.toggle('text-rose-700', !isActive);
+                }
+            });
+
+            prevBtn.classList.toggle('hidden', step === 1);
+            nextBtn.classList.toggle('hidden', step === 3);
+            submitBtn.classList.toggle('hidden', step !== 3);
+        }
+
+        nextBtn.addEventListener('click', function () {
+            if (currentStep < 3) {
+                setVendorStep(currentStep + 1);
+            }
+        });
+
+        prevBtn.addEventListener('click', function () {
+            if (currentStep > 1) {
+                setVendorStep(currentStep - 1);
+            }
+        });
+
+        const observer = new MutationObserver(function () {
+            if (!modal.classList.contains('hidden')) {
+                setVendorStep(1);
+            }
+        });
+
+        observer.observe(modal, { attributes: true, attributeFilter: ['class'] });
+        setVendorStep(1);
+    });
 </script>
 @endsection
