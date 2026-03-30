@@ -117,8 +117,8 @@
 
 
     <!-- ================= ORDER TABLE ================= -->
-    <div class="card shadow-lg border-0">
-        <div class="card-header bg-dark text-white py-3">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100">
+        <div class="flex justify-between items-center px-6 py-4 border-b">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">
                     <i class="fas fa-shopping-bag me-2"></i> Order History
