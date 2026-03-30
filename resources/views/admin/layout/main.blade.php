@@ -51,9 +51,7 @@
                                 class="absolute -top-1 -right-1 bg-blue-500 text-white text-[10px] px-1.5 rounded-full">5</span>
                         </div>
 
-
-
-                        <div class="invisible absolute right-0 mt-2 w-44 rounded-2xl border border-slate-200 bg-white shadow-lg opacity-0 transition duration-200 group-hover:visible group-hover:opacity-100">
+                        <!-- <div class="invisible absolute right-0 mt-2 w-44 rounded-2xl border border-slate-200 bg-white shadow-lg opacity-0 transition duration-200 group-hover:visible group-hover:opacity-100">
                             <a href="{{ route('admin.profile')}}" class="block rounded-t-2xl px-4 py-3 text-sm text-slate-700 transition hover:bg-slate-50">
                                 My Profile
                             </a>
@@ -65,7 +63,7 @@
                                     Logout
                                 </button>
                             </form>
-                        </div>
+                        </div> -->
 
                         <!-- Grid -->
                         <button
@@ -95,11 +93,11 @@
                             <div id="profileDropdown"
                                 class="hidden absolute right-0 mt-3 w-52 bg-white shadow-lg rounded-xl p-2">
 
-                                <a href="/" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded-lg">
+                                <a href="{{ route('admin.profile')}}" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded-lg">
                                     My Profile
                                 </a>
 
-                                <form method="POST" action="/logout">
+                                <form method="POST" action="{{ route('admin.logout') }}">
                                     @csrf
                                     <button class="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 rounded-lg">
                                         Logout
