@@ -59,11 +59,11 @@
                 <tr class="transition duration-200 hover:bg-rose-50">
 
                     <td class="p-4 font-medium text-slate-900">
-                        {{ $user->name }}
+                        {{ $user->name ?? "N/A" }}
                     </td>
 
                     <td class="p-4 text-slate-600">
-                        {{ $user->email }}
+                        {{ $user->email ?? "N/A" }}
                     </td>
 
                     <td class="p-4">
@@ -78,7 +78,7 @@
 
                     <!-- Action -->
                     <td class="p-4 text-center">
-                        <a href="#"
+                        <a href="{{ route('admin.users.profile', encrypt( $user->id)  )}}"
                            class="text-slate-700 transition hover:text-[#f5185a]"
                            title="View">
                             <i class="fa-regular fa-eye text-lg"></i>
