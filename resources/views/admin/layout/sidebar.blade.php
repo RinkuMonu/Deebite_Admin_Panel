@@ -9,7 +9,7 @@
     ];
 @endphp
 
-<aside id="adminSidebar" class="group fixed inset-y-0 left-0 z-40 flex min-h-screen w-60 shrink-0 flex-col border-r border-slate-800 bg-gradient-to-b from-slate-950 via-slate-900 to-black px-3 py-5 text-white shadow-xl shadow-slate-900/30 transition-all duration-300 ease-out lg:static lg:translate-x-0">
+<aside id="adminSidebar" class="group fixed inset-y-0 left-0 z-40 flex min-h-screen w-60 shrink-0 flex-col border-r border-slate-800 bg-slate-950 px-3 py-5 text-white shadow-xl shadow-slate-900/30 transition-all duration-300 ease-out lg:static lg:translate-x-0">
     <div class="mb-8 flex items-center gap-3 overflow-hidden px-1">
         <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white text-base text-black shadow-md shadow-black/15">
             <i class="fa-solid fa-shield-halved"></i>
