@@ -30,11 +30,11 @@
                 <p class="text-sm text-gray-500">{{ $user->email }}</p>
 
                 <p class="text-sm text-gray-600 mt-2">
-                    📞 {{ $user->number ?? 'Not provided' }}
+                    <i class="fa-solid fa-phone"></i> {{ $user->number ?? 'Not provided' }}
                 </p>
 
                 <p class="text-sm text-gray-600">
-                    📍 {{ $user->address ?? 'Not provided' }}
+                    <i class="fa-solid fa-location-arrow"></i> {{ $user->address ?? 'Not provided' }}
                 </p>
             </div>
 
@@ -79,32 +79,40 @@
         </div>
 
         <!-- Table -->
-        <div class="overflow-x-auto">
-            <table class="w-full text-sm">
+        <div class="overflow-hidden border border-rose-200 bg-rose-200 shadow-lg shadow-rose-100/40">
 
-                <thead class="bg-gray-50 text-gray-600 text-xs uppercase">
-                    <tr>
-                        <th class="p-3 text-left">#</th>
-                        <th class="p-3 text-left">Order ID</th>
-                        <th class="p-3 text-left">Amount</th>
-                        <th class="p-3 text-left">Status</th>
-                        <th class="p-3 text-left">Payment</th>
-                        <th class="p-3 text-left">Date</th>
-                        <th class="p-3 text-center">Action</th>
-                    </tr>
-                </thead>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left">
 
-                <!-- EMPTY BODY -->
-                <tbody>
-                    <tr>
-                        <td colspan="7" class="p-6 text-center text-gray-400">
-                            📦 No orders available
-                        </td>
-                    </tr>
-                </tbody>
+            <!-- Header -->
+            <thead class="bg-rose-200 text-slate-900 uppercase text-xs tracking-wider">
+                <tr>
+                    <th class="p-4">#</th>
+                    <th class="p-4"><i class="fa-solid fa-hashtag mr-2"></i>Order ID</th>
+                    <th class="p-4"><i class="fa-solid fa-indian-rupee-sign mr-2"></i>Amount</th>
+                    <th class="p-4"><i class="fa-solid fa-signal mr-2"></i>Status</th>
+                    <th class="p-4"><i class="fa-solid fa-credit-card mr-2"></i>Payment</th>
+                    <th class="p-4"><i class="fa-regular fa-calendar mr-2"></i>Date</th>
+                    <th class="p-4 text-center"><i class="fa-solid fa-gear mr-2"></i>Action</th>
+                </tr>
+            </thead>
 
-            </table>
-        </div>
+            <!-- Body -->
+            <tbody class="divide-y divide-rose-200 bg-white">
+
+                <!-- EMPTY STATE -->
+                <tr class="transition duration-200 hover:bg-rose-50">
+                    <td colspan="7" class="p-6 text-center text-slate-500">
+                        <i class="fa-solid fa-box mr-2"></i> No orders available
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
 
     </div>
 
