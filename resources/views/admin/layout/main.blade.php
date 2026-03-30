@@ -36,8 +36,10 @@
                                 class="h-9 w-9 rounded-full border border-slate-200 sm:h-10 sm:w-10">
                         </div>
 
+
+
                         <div class="invisible absolute right-0 mt-2 w-44 rounded-2xl border border-slate-200 bg-white shadow-lg opacity-0 transition duration-200 group-hover:visible group-hover:opacity-100">
-                            <a href="{{ route('admin.profile') }}" class="block rounded-t-2xl px-4 py-3 text-sm text-slate-700 transition hover:bg-slate-50">
+                            <a href="{{ route('admin.profile')}}" class="block rounded-t-2xl px-4 py-3 text-sm text-slate-700 transition hover:bg-slate-50">
                                 My Profile
                             </a>
 
