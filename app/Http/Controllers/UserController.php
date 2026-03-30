@@ -24,4 +24,27 @@ class UserController extends Controller
         $users = $query->latest()->paginate(10)->withQueryString();
         return view('admin.users.index', compact('users'));
     }
+
+    public function profile($id)
+    {
+        try {
+        // Decrypt ID
+        $userid = decrypt($id);
+
+        // Get user with orders
+        $user = User::with('orders')->findOrFail($userid);
+
+        return view('admin.users.profile', compact('user'));
+
+        } catch (\Exception $e) {
+
+            \Log::error('User profile error: '.$e->getMessage());
+
+            return redirect()->back()->with('error', 'Something went wrong');
+        }
+    }
+
+
+
+
 }

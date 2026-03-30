@@ -24,8 +24,20 @@ Route::get('admin-login',function(){
 Route::post('admin-login',[AuthController::class,'login'])->name('admin.login.post');
 
 Route::middleware(['isSuperAdmin'])->prefix('admin')->group(function (){
+    Route::get('/profile' , [DashboardController::class,'profile'])->name('admin.profile');
+    Route::put('/password/update', [DashboardController::class, 'updatePassword'])->name('admin.password.update');
+    Route::put('/profile/update', [DashboardController::class, 'updateProfile'])->name('admin.profile.update');
     Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
+    // User Management
     Route::get('/users',[UserController::class,'index'])->name('admin.users');
+    Route::get('/users/{id}/profile', [UserController::class, 'profile'])->name('admin.users.profile');
+
+    //Admin Enquiry Management
+    Route::get('/enquiries/vendors', [DashboardController::class, 'vendorEnquiries'])->name('admin.enquiry.vendors');
+    Route::get('/enquiries/delivery-partners', [DashboardController::class, 'deliveryPartnerEnquiries'])->name('admin.enquiry.delivery');
+    Route::delete('/enquiries/destroy', [DashboardController::class, 'destroyEnquiry'])->name('admin.enquiry.destroy');
+
+    // Vendor Management
     Route::get('/vendors',[VendorController::class,'index'])->name('admin.vendors');
     Route::post('/vendors/store', [VendorController::class, 'storeVendor'])->name('admin.vendors.store');
     Route::post('/vendors/update/{id}', [VendorController::class, 'updateVendor'])->name('admin.vendors.update');
@@ -44,10 +56,12 @@ Route::middleware(['isSuperAdmin'])->prefix('admin')->group(function (){
         Route::delete('/delete/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.delete');
         Route::get('/{id}/food-items', [CategoryController::class, 'getFoodItems']); // View items popup ke liye
     });
+
     Route::post('/logout',function(){
         Auth::logout();
         return redirect()->route('auth.login');
     })->name('admin.logout');
+
 });
 
 
