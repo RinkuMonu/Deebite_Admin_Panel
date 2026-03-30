@@ -5,6 +5,14 @@
         ['route' => 'admin.vendors', 'icon' => 'fa-store', 'label' => 'Vendors'],
         ['route' => 'admin.delivery-partners', 'icon' => 'fa-truck', 'label' => 'Delivery Partners'],
         ['route' => 'admin.categories.index', 'icon' => 'fa-layer-group', 'label' => 'Categories'],
+        [
+            'label' => 'Enquiry',
+            'icon' => 'fa-circle-question',
+            'children' => [
+                ['route' => 'admin.enquiry.vendors', 'label' => 'Vendor Enquiry'],
+                ['route' => 'admin.enquiry.delivery', 'label' => 'Delivery Partner Enquiry'],
+            ]
+        ],
         ['route' => 'feedback.index', 'icon' => 'fa-comment', 'label' => 'Feedback'],
     ];
 @endphp
@@ -21,21 +29,68 @@
     </div>
 
     <nav class="flex-1 space-y-2">
-        @foreach($navItems as $item)
+    @foreach($navItems as $item)
+
+        {{-- If item has children --}}
+        {{-- If item has children --}}
+@if(isset($item['children']))
+    @php
+        $isChildActive = collect($item['children'])->contains(fn($child) => request()->routeIs($child['route']));
+    @endphp
+
+    <div x-data="{ open: {{ $isChildActive ? 'true' : 'false' }} }" class="space-y-1">
+
+        {{-- Parent --}}
+        <button @click="open = !open"
+            class="flex w-full items-center justify-between gap-3 rounded-md px-2.5 py-2.5 text-sm font-medium transition-all text-slate-200 hover:text-white">
+
+            <div class="flex items-center gap-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-md bg-white/10">
+                    <i class="fa-solid {{ $item['icon'] }}"></i>
+                </span>
+                <span class="sidebar-text">{{ $item['label'] }}</span>
+            </div>
+
+            {{-- Arrow --}}
+            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300"
+               :class="{ 'rotate-180': open }"></i>
+        </button>
+
+        {{-- Children --}}
+        <div x-show="open"
+             x-transition
+             class="ml-12 space-y-1">
+
+            @foreach($item['children'] as $child)
+                @php
+                    $isActive = request()->routeIs($child['route']);
+                @endphp
+
+                <a href="{{ route($child['route']) }}"
+                   class="block rounded-md px-3 py-2 text-sm transition-all {{ $isActive ? 'bg-white text-black' : 'text-slate-300 hover:text-white' }}">
+                    {{ $child['label'] }}
+                </a>
+            @endforeach
+        </div>
+    </div>
+
+        {{-- Normal menu item --}}
+        @else
             @php
                 $isActive = request()->routeIs($item['route']);
             @endphp
 
             <a href="{{ route($item['route']) }}"
-                title="{{ $item['label'] }}"
-                class="flex items-center gap-3 overflow-hidden rounded-md px-2.5 py-2.5 text-sm font-medium transition-all duration-200 {{ $isActive ? 'bg-white text-black shadow-md shadow-white/10' : 'text-slate-200 hover:text-white' }}">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md {{ $isActive ? 'bg-black/5 text-black' : 'bg-white/10 text-slate-200 group-hover:text-white' }}">
+               class="flex items-center gap-3 rounded-md px-2.5 py-2.5 text-sm font-medium transition-all {{ $isActive ? 'bg-white text-black shadow-md shadow-white/10' : 'text-slate-200 hover:text-white' }}">
+                <span class="flex h-10 w-10 items-center justify-center rounded-md {{ $isActive ? 'bg-black/5 text-black' : 'bg-white/10 text-slate-200' }}">
                     <i class="fa-solid {{ $item['icon'] }}"></i>
                 </span>
-                <span class="sidebar-text whitespace-nowrap transition-all duration-300">{{ $item['label'] }}</span>
+                <span class="sidebar-text">{{ $item['label'] }}</span>
             </a>
-        @endforeach
-    </nav>
+        @endif
+
+    @endforeach
+</nav>
 
     <div class="mt-6 border-t border-white/10 pt-4">
         <form action="{{ route('admin.logout') }}" method="POST">

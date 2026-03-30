@@ -7,6 +7,7 @@
     <title>Super Admin | @yield('title')</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
 <body class="overflow-x-hidden bg-gradient-to-br from-slate-50 via-white to-amber-50 font-sans text-slate-800">
@@ -36,11 +37,11 @@
                         </div>
 
                         <div class="invisible absolute right-0 mt-2 w-44 rounded-2xl border border-slate-200 bg-white shadow-lg opacity-0 transition duration-200 group-hover:visible group-hover:opacity-100">
-                            <a href="/" class="block rounded-t-2xl px-4 py-3 text-sm text-slate-700 transition hover:bg-slate-50">
+                            <a href="{{ route('admin.profile') }}" class="block rounded-t-2xl px-4 py-3 text-sm text-slate-700 transition hover:bg-slate-50">
                                 My Profile
                             </a>
 
-                            <form method="POST" action="/logout">
+                            <form method="POST" action="{{ route('admin.logout') }}">
                                 @csrf
                                 <button type="submit"
                                     class="w-full rounded-b-2xl px-4 py-3 text-left text-sm text-slate-700 transition hover:bg-slate-50">
