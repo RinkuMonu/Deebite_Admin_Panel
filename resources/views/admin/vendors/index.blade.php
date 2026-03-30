@@ -155,7 +155,7 @@
 <div id="vendorModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4">
 
     <!-- Modal Card -->
-    <div class="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-900/10">
+    <div class="max-h-[90vh] w-full max-w-3xl overflow-y-auto  border border-slate-200 bg-white shadow-xl shadow-slate-900/10">
 
         <!-- Header -->
         <div class="flex items-center justify-between border-b border-slate-200 bg-white px-6 py-4">

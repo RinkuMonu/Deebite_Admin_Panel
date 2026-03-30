@@ -11,9 +11,14 @@
 
 <aside id="adminSidebar" class="group fixed inset-y-0 left-0 z-40 flex min-h-screen w-60 shrink-0 flex-col border-r border-slate-800 bg-gradient-to-b from-slate-950 via-slate-900 to-black px-3 py-5 text-white shadow-xl shadow-slate-900/30 transition-all duration-300 ease-out lg:static lg:translate-x-0">
     <div class="mb-8 flex items-center gap-3 overflow-hidden px-1">
-        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white text-base text-black shadow-md shadow-black/15">
-            <i class="fa-solid fa-shield-halved"></i>
-        </div>
+        <button
+            id="sidebarToggle"
+            type="button"
+            aria-label="Toggle sidebar"
+            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-base text-white shadow-md shadow-black/15 transition hover:bg-white/20"
+        >
+            <i class="fa-solid fa-bars-staggered"></i>
+        </button>
         <div class="sidebar-text min-w-0 transition-all duration-300">
             <p class="truncate text-lg font-semibold tracking-wide text-white">Admin Panel</p>
             <p class="truncate text-xs uppercase tracking-[0.25em] text-slate-400">Control Center</p>
