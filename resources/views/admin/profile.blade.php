@@ -35,7 +35,7 @@
         <!-- SIDEBAR -->
         <div class="col-span-12 md:col-span-4">
 
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center">
+            <div class="bg-white  shadow-sm border border-gray-100 p-6 text-center">
 
                 <!-- Avatar -->
                 @if($admin->avatar)
@@ -90,7 +90,7 @@
         <div class="col-span-12 md:col-span-8 space-y-6">
 
             <!-- UPDATE PROFILE -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div class="bg-white  shadow-sm border border-gray-100 p-6">
 
                 <h2 class="text-lg font-semibold text-gray-800 mb-4">
                     Update Profile Information
@@ -128,7 +128,7 @@
 
 
             <!-- CHANGE PASSWORD -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div class="bg-white  shadow-sm border border-gray-100 p-6">
 
                 <h2 class="text-lg font-semibold text-gray-800 mb-4">
                     Change Password
