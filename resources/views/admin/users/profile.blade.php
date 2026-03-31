@@ -8,7 +8,7 @@
 <div class="max-w-7xl mx-auto p-4 space-y-6">
 
     <!-- ================= PROFILE CARD ================= -->
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+    <div class="bg-white  shadow-sm border border-gray-100 p-6">
 
         <div class="grid grid-cols-12 gap-6 items-center">
 
@@ -41,19 +41,19 @@
             <!-- Stats -->
             <div class="col-span-12 md:col-span-5 grid grid-cols-3 gap-4 text-center">
 
-                <div class="bg-gray-50 rounded-lg p-3">
+                <div class="bg-gray-50  p-3">
                     <p class="text-indigo-600 font-bold text-lg">{{ $user->orders->count() }}</p>
                     <p class="text-xs text-gray-500">Orders</p>
                 </div>
 
-                <div class="bg-gray-50 rounded-lg p-3">
+                <div class="bg-gray-50  p-3">
                     <p class="text-yellow-500 font-bold text-lg">
                         {{ number_format($user->rating ?? 0, 1) }}
                     </p>
                     <p class="text-xs text-gray-500">Rating</p>
                 </div>
 
-                <div class="bg-gray-50 rounded-lg p-3">
+                <div class="bg-gray-50  p-3">
                     <p class="text-blue-500 font-bold text-lg">{{ ucfirst($user->role) }}</p>
                     <p class="text-xs text-gray-500">Role</p>
                 </div>
@@ -71,7 +71,7 @@
 
 
     <!-- ================= ORDER TABLE ================= -->
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <div class="bg-white  shadow-sm border border-gray-100 overflow-hidden">
 
         <!-- Header -->
         <div class="px-5 py-4 border-b">
