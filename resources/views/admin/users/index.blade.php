@@ -6,20 +6,18 @@
 <div class="space-y-6">
     <div class="rounded-xl border bg-white p-6 shadow-lg shadow-rose-100/40">
         <form action="{{ route('admin.users') }}" method="GET"
-              class="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
+            class="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
             <h2 class="text-lg font-semibold text-slate-900">
                 Customer List
             </h2>
 
             <div class="flex flex-col gap-3 md:flex-row md:items-center">
                 <input type="text" name="search" value="{{ request('search') }}"
-                    placeholder="Search by name or email..."
-                    class="w-full rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm text-slate-700 md:w-64
-                           focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                    placeholder="Search by name or email..." class="w-full rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm text-slate-700 md:w-64
+                        focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
 
-                <select name="status"
-                    class="w-full rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm text-slate-700 md:w-44
-                           focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
+                <select name="status" class="w-full rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm text-slate-700 md:w-44
+                        focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200">
                     <option value="">All Status</option>
                     <option value="1" {{ request('status') == '1' ? 'selected' : '' }}>Active</option>
                     <option value="0" {{ request('status') == '0' ? 'selected' : '' }}>Inactive</option>
@@ -31,7 +29,7 @@
                 </button>
 
                 <a href="{{ route('admin.users') }}"
-                   class="rounded-xl border border-rose-200 bg-white px-4 py-2 text-center text-sm font-medium text-slate-700 transition hover:bg-rose-50">
+                    class="rounded-xl border border-rose-200 bg-white px-4 py-2 text-center text-sm font-medium text-slate-700 transition hover:bg-rose-50">
                     <i class="fa-solid fa-rotate-left mr-1"></i> Reset
                 </a>
             </div>
@@ -79,8 +77,7 @@
                     <!-- Action -->
                     <td class="p-4 text-center">
                         <a href="{{ route('admin.users.profile', encrypt( $user->id)  )}}"
-                           class="text-slate-700 transition hover:text-[#f5185a]"
-                           title="View">
+                            class="text-slate-700 transition hover:text-[#f5185a]" title="View">
                             <i class="fa-regular fa-eye text-lg"></i>
                         </a>
                     </td>
