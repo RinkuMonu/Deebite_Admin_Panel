@@ -3,6 +3,7 @@
 @section('page-title', 'Vendor Enquiry List')
 
 @section('content')
+
 <div class="overflow-x-auto rounded-lg border border-gray-700 shadow-md mt-4">
 
     {{-- Session Error Message --}}
@@ -73,5 +74,8 @@
     <div class="mt-4">
         {{ $enquiries->links() }}
     </div>
+
+
 </div>
+
 @endsection

@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Feedback;
+use App\Models\Enquiry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
@@ -11,7 +12,7 @@ class FeedbackController extends Controller
 {
     public function store(Request $request)
     {
-        Log::info('Step 1: Request Started');
+        // Log::info('Step 1: Request Started');
         // 1. Validation
         $validator = Validator::make($request->all(), [
             'name'   => 'required|string|max:255',
@@ -27,7 +28,7 @@ class FeedbackController extends Controller
                 'errors'  => $validator->errors()
             ], 422);
         }
-            Log::info('Step 2: Validation Passed');
+            // Log::info('Step 2: Validation Passed');
         try {
             // 2. Data Save
             $feedback = Feedback::create([
@@ -36,7 +37,7 @@ class FeedbackController extends Controller
                 'feedback' => $request->feedback,
                 'rating'   => $request->rating,
             ]);
-                Log::info('Step 3: Data Created in DB');
+                // Log::info('Step 3: Data Created in DB');
             return response()->json([
                 'status'  => true,
                 'message' => 'Feedback submitted successfully!',
@@ -52,4 +53,50 @@ class FeedbackController extends Controller
             ], 500);
         }
     }
+
+    public function enquirySubmit(Request $request)
+    {
+        try {
+            // ✅ Validation
+            $validated = $request->validate([
+                'name'   => 'required|string|max:255',
+                'mobile' => 'required|digits:10',
+                'role'   => 'required|in:vendor,delivery',
+            ]);
+
+            // ✅ Create Enquiry
+            $enquiry = Enquiry::create([
+                'name'   => $validated['name'],
+                'mobile' => $validated['mobile'],
+                'role'   => $validated['role'],
+            ]);
+
+            // ✅ Success Response
+            return response()->json([
+                'status'  => true,
+                'message' => 'Enquiry submitted successfully',
+                'data'    => $enquiry
+            ], 201);
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // ❌ Validation Error Response
+            return response()->json([
+                'status'  => false,
+                'message' => 'Validation failed',
+                'errors'  => $e->errors()
+            ], 422);
+
+        } catch (\Exception $e) {
+            // ❌ General Exception
+            return response()->json([
+                'status'  => false,
+                'message' => 'Something went wrong',
+                'error'   => $e->getMessage() // remove in production
+            ], 500);
+        }
+    }
+
+   
+
+    
 }
