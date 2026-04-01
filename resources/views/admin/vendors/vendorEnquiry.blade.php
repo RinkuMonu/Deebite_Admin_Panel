@@ -3,6 +3,10 @@
 @section('page-title', 'Vendor Enquiry List')
 
 @section('content')
+<<<<<<< HEAD
+
+<div class="overflow-x-auto rounded-lg border border-gray-700 shadow-md mt-4">
+=======
  <div class="rounded-xl border bg-white p-6 shadow-lg shadow-rose-100/40">
         <form action="{{ route('admin.users') }}" method="GET"
             class="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
@@ -35,6 +39,7 @@
         </form>
     </div>
 <div class="overflow-x-auto shadow-md mt-4">
+>>>>>>> d3ff0323c2d2d45cbb0f2595ab8daa1ed0c0e77e
 
     {{-- Session Error Message --}}
     @if(session('error'))
@@ -134,12 +139,20 @@
 
     </table>
 
+<<<<<<< HEAD
+    <div class="mt-4">
+        {{ $enquiries->links() }}
+    </div>
+
+=======
 </div>
 
 <!-- Pagination -->
 <div class="mt-4">
     {{ $enquiries->links() }}
 </div>
+>>>>>>> d3ff0323c2d2d45cbb0f2595ab8daa1ed0c0e77e
 
 </div>
+
 @endsection
