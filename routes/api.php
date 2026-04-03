@@ -11,8 +11,11 @@ use App\Http\Controllers\Api\FeedbackController;
 // for Rate limiting one ip-> hit the API more than 60 times in a minute then block that ip for 1 minute
 Route::middleware('throttle:rateLimiter')->group(function () {
     
-
+    //API route for feedback and Enquiry form submission
     Route::post('/feedback/submit', [FeedbackController::class, 'store']);
+    Route::post('/enquiry/submit', [FeedbackController::class, 'enquirySubmit']); 
+    // Route::post('/delivery-partner/enquiry/submit', [FeedbackController::class, 'deliveryPartnerEnquiry']); 
+
     // Auth routes for all users (Vendor, Delivery Partner, Customer)-------------------------------------
     Route::prefix('auth')->group(function () {
         Route::post('/send-otp', [AuthController::class, 'sendOtp']);
