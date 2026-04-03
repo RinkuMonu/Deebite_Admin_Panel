@@ -105,14 +105,14 @@
                         <div>
                             <label class="text-sm text-gray-600">Full Name</label>
                             <input type="text" name="name" value="{{ old('name', $admin->name) }}"
-                                class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none"
+                                class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-md focus:ring-2 focus:ring-indigo-400 outline-none"
                                 required>
                         </div>
 
                         <div>
                             <label class="text-sm text-gray-600">Email Address</label>
                             <input type="email" name="email" value="{{ old('email', $admin->email) }}"
-                                class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none"
+                                class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-md focus:ring-2 focus:ring-indigo-400 outline-none"
                                 required>
                         </div>
 
@@ -143,21 +143,21 @@
                         <div>
                             <label class="text-sm text-gray-600">Current Password</label>
                             <input type="password" name="current_password"
-                                class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none"
+                                class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-md focus:ring-2 focus:ring-indigo-400 outline-none"
                                 required>
                         </div>
 
                         <div>
                             <label class="text-sm text-gray-600">New Password</label>
                             <input type="password" name="new_password"
-                                class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none"
+                                class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-md focus:ring-2 focus:ring-indigo-400 outline-none"
                                 required>
                         </div>
 
                         <div>
                             <label class="text-sm text-gray-600">Confirm New Password</label>
                             <input type="password" name="new_password_confirmation"
-                                class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none"
+                                class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-md focus:ring-2 focus:ring-indigo-400 outline-none"
                                 required>
                         </div>
 
