@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="space-y-6">
-    <div class="rounded-xl border bg-white p-6 shadow-lg shadow-rose-100/40">
+    <div class="border bg-white p-6 shadow-lg shadow-rose-100/40">
         <form action="{{ route('admin.users') }}" method="GET"
             class="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
             <h2 class="text-lg font-semibold text-slate-900">
@@ -36,7 +36,7 @@
         </form>
     </div>
 
-    <div class="rounded-xl overflow-hidden border border-rose-200 bg-rose-200 shadow-lg shadow-rose-100/30">
+    <div class=" overflow-hidden border border-rose-200 bg-rose-200 shadow-lg shadow-rose-100/30">
         <!-- Table -->
         <table class="w-full text-sm text-left">
 
