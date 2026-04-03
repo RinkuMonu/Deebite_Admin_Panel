@@ -197,8 +197,6 @@ class AuthController extends Controller
                 return response()->json(['message' => 'No device token found for user'], 404);
             }
 
-           
-
             event(new TestEventNotification(
                 $deviceToken->device_token,
                 'Test Notification - 1',
